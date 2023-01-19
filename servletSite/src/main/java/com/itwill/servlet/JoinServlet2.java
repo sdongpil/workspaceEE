@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/join2.do")
 public class JoinServlet2 extends HttpServlet {
-	
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		/*
 		 * GET 방식으로 요청이 들어오면 05-03.form2.html로 방향재지정 (redirection)
 		 */
 		response.sendRedirect("05-03.form2.html");
 	}
-	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -48,12 +48,11 @@ public class JoinServlet2 extends HttpServlet {
 		String pass = request.getParameter("pass");
 		String repass = request.getParameter("repass");
 		String name = request.getParameter("name");
-		String addr = request.getParameter("addr");		
+		String addr = request.getParameter("addr");
 		String gender = request.getParameter("gender");
 		String job = request.getParameter("job");
-		String[] hobbys = request.getParameterValues("hobby");
+		String[] hobbies = request.getParameterValues("hobby");
 
-		
 		/*
 		 * 2.Service객체 가입메쏘드호출
 		 */
@@ -86,36 +85,39 @@ public class JoinServlet2 extends HttpServlet {
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td>아이디</td>");
-		out.println("			<td>"+id+"</td>");
+		out.println("			<td>" + id + "</td>");
 		out.println("			<td rowspan='10'></td>");
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td>패쓰워드</td>");
-		out.println("			<td>"+pass+"</td>");
+		out.println("			<td>" + pass + "</td>");
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td>이름</td>");
-		out.println("			<td>"+name+"</td>");
+		out.println("			<td>" + name + "</td>");
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td>주소</td>");
-		out.println("			<td>"+addr+"</td>");
+		out.println("			<td>" + addr + "</td>");
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td>성별</td>");
-		out.println("			<td>"+gender+"</td>");
+		out.println("			<td>" + gender + "</td>");
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td>직업</td>");
-		out.println("			<td>"+job+"</td>");
+		out.println("			<td>" + job + "</td>");
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td rowspan='6'>취미</td>");
-		
-		for(String hobby :hobbys) {
-			out.println("<tr>");
-			out.println("<td>"+hobby+"</td>");
-			out.println("</tr>");
+		if (hobbies != null) {
+			for (String hobby : hobbies) {
+				out.println("<tr>");
+				out.println("<td>" + hobby + "</td>");
+				out.println("</tr>");
+			}
+		} else {
+			out.println("<td>없음</td>");
 		}
 		out.println("	</table>");
 		out.println("</body>");

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwill.address.Address;
+import com.itwill.address.AddressService;
+
 /**
  * Servlet implementation class AddressDeleteActionServlet
  */
@@ -22,10 +25,18 @@ public class AddressDeleteActionServlet extends HttpServlet {
 			 * 요청라인 POST /addressSite/address_delete_action.do HTTP/1.1 요청헤더 요청바디 no=1
 			 */
 			/*
-			 * 0.요청객체encoding설정 1.파라메타받기 2.AddressService객체생성
-			 * 3.AddressService.deleteByNo()메쏘드실행 4.클라이언트로 redirection 응답--> address_list.do
+			 * 0.요청객체encoding설정 
+			 * 1.파라메타받기 
+			 * 2.AddressService객체생성
+			 * 3.AddressService.deleteByNo()메쏘드실행 
+			 * 4.클라이언트로 redirection 응답--> address_list.do
 			 * 로 redirection
 			 */
+			request.setCharacterEncoding("utf-8");
+			String no = request.getParameter("no");
+			AddressService addressService = new AddressService();
+			addressService.delete(Integer.parseInt(no));
+			
 			response.sendRedirect("address_list.do");
 
 		} catch (Exception e) {

@@ -30,6 +30,16 @@ public class AddressInsertActionServlet extends HttpServlet {
 			 * 3.AddressService.insert()메쏘드실행
 			 * 4.address_list.do 로 redirection
 			 */
+			request.setCharacterEncoding("utf-8");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String address = request.getParameter("address");
+			Address insertAddress = new Address(0, name, phone, address);
+			AddressService addressService = new AddressService();
+			addressService.insert(insertAddress);
+			
+			
+			
 			response.sendRedirect("address_list.do");
 			
 		}catch (Exception e) {

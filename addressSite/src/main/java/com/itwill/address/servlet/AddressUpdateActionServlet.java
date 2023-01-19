@@ -35,6 +35,12 @@ public class AddressUpdateActionServlet extends HttpServlet {
 			 */
 			request.setCharacterEncoding("utf-8");
 			String no = request.getParameter("no");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String address = request.getParameter("address");
+			Address newAddress = new Address(Integer.parseInt(no), name, phone, address);
+			AddressService addressService = new AddressService();
+			addressService.update(newAddress);
 			
 			response.sendRedirect("address_detail.do");
 			
