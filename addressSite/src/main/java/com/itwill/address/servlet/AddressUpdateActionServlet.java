@@ -1,6 +1,8 @@
 package com.itwill.address.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +34,8 @@ public class AddressUpdateActionServlet extends HttpServlet {
 			 * 4.AddressService.update()메쏘드실행 
 			 * 5.adress_detail.do 로
 			 * redirection
-			 */
+			 */	
+			PrintWriter out = response.getWriter();
 			request.setCharacterEncoding("utf-8");
 			String no = request.getParameter("no");
 			String name = request.getParameter("name");
@@ -41,8 +44,7 @@ public class AddressUpdateActionServlet extends HttpServlet {
 			Address newAddress = new Address(Integer.parseInt(no), name, phone, address);
 			AddressService addressService = new AddressService();
 			addressService.update(newAddress);
-			
-			response.sendRedirect("address_detail.do");
+			response.sendRedirect("address_detail.do?no="+no);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
