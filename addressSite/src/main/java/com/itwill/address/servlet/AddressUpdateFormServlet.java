@@ -57,6 +57,8 @@ public class AddressUpdateFormServlet extends HttpServlet {
 			out.println("<title>Insert title here</title>");
 			out.println("</head>");
 			out.println("<body>");
+			
+			
 			out.println("<h1>["+address.getName() +"님 주소록 수정폼]</h1><hr>");
 			out.println("<hr>");
 			out.println("	<div>");

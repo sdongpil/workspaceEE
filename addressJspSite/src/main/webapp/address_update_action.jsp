@@ -1,7 +1,7 @@
 <%@page import="com.itwill.address.AddressService"%>
 <%@page import="com.itwill.address.Address"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%
 /*
  
@@ -15,7 +15,21 @@ GET방식의요청이 들어오면 address_main.jsp 로 redirection
  * 5.adress_detail.jsp 로
  * redirection
  */
- 
+ try {
+		
+		request.setCharacterEncoding("utf-8");
+		String no = request.getParameter("no");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		Address newAddress = new Address(Integer.parseInt(no), name, phone, address);
+		AddressService addressService = new AddressService();
+		addressService.update(newAddress);
+		response.sendRedirect("address_detail.jsp?no="+no);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 %>
 
 

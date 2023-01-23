@@ -4,7 +4,7 @@
 <%@page import="com.itwill.address.AddressService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+
 /*
  * 0.요청객체encoding설정
  * 1.파라메타받기
@@ -12,6 +12,8 @@
  * 3.AddressService객체 selectAll() 메쏘드호출
  * 4.List<Address> 리스트 출력
  */
+ 
+ <% 
   AddressService addressService = new AddressService();
 	List<Address> addressList =	addressService.selectAll();
 %>
@@ -34,7 +36,12 @@
 	<div>
 		<ul>
 			<% for(Address address :addressList){ %>
-				<li> <a href = address_detail.jsp?no=<% address.ge                                                     tNo(); %> > <% out.print("["+address.getNo()+"]"); out.print(address.getName()); %></a></li>
+				<li> 
+				<a href ='address_detail.jsp?no=<%=address.getNo()%>'>  
+				<% out.print("["+address.getNo()+"]"); out.print(address.getName()); %>
+				</a>
+				
+				</li>
 				<%} %>
 
 

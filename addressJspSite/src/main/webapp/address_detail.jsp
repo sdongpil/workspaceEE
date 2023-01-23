@@ -36,9 +36,9 @@
 	<a href='address_main.jsp'>[메인]</a>
 	<a href='address_insert_form.jsp'>[주소록쓰기폼]</a>
 	<a href='address_list.jsp'>[주소록리스트]</a>
-	<%-- 
-	<a href='address_update_form.jsp?no=<%=address.getNo()%>'>[<%=address.getName() %>님 주소록수정폼GET]</a>
-	 --%>
+	
+	<%-- <a href='address_update_form.jsp?no=<%=address.getNo()%>'>[<%=address.getName() %>님 주소록수정폼GET]</a> --%>
+	 
 	<form action="address_update_form.jsp" method="post" style="display: inline;">
 		<input type="hidden" name="no" value="<%=address.getNo()%>">
 		<input type="submit" value="<%=address.getName() %>님 주소록수정폼[POST]">	
