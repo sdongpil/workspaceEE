@@ -12,7 +12,23 @@
  * 3.AddressService.insert(Address객체)메쏘드실행
  * 4.address_list.jsp 로 redirection
  */
- 
+ if(request.getMethod().equalsIgnoreCase("get")){
+		response.sendRedirect("address_main.jsp");
+		return;
+	}
+
+
+request.setCharacterEncoding("utf-8");
+
+
+String name = request.getParameter("name");
+String phone = request.getParameter("phone");
+String address = request.getParameter("address");
+
+Address insertAddress = new Address(0,name,phone,address);
+AddressService addressService = new AddressService();
+addressService.insert(insertAddress);
+response.sendRedirect("address_list.jsp"); 
  
  
 %>

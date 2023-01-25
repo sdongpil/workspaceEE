@@ -15,21 +15,29 @@ GET방식의요청이 들어오면 address_main.jsp 로 redirection
  * 5.adress_detail.jsp 로
  * redirection
  */
- try {
-		
+ 		if(request.getMethod().equalsIgnoreCase("get")){
+				response.sendRedirect("address_main.jsp");
+				return;
+			}
+ 
+	
 		request.setCharacterEncoding("utf-8");
 		String no = request.getParameter("no");
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
-		Address newAddress = new Address(Integer.parseInt(no), name, phone, address);
-		AddressService addressService = new AddressService();
-		addressService.update(newAddress);
-		response.sendRedirect("address_detail.jsp?no="+no);
 		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
+		Address updateAddress = new Address(Integer.parseInt(no),name,phone,address	);
+		
+		
+		AddressService addressService = new AddressService();
+		addressService.update(updateAddress);
+		response.sendRedirect("address_detail.jsp?no="+no); 
+		
+	
+
+		
+	
 %>
 
 

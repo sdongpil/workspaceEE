@@ -13,4 +13,18 @@
 	* 4.클라이언트로 redirection 응답--> address_list.jsp 로 redirection
 	*/
 	
+	 if(request.getMethod().equalsIgnoreCase("get")){
+			response.sendRedirect("address_main.jsp");
+			return;
+		}
+
+
+	request.setCharacterEncoding("utf-8");
+	String no = request.getParameter("no");
+	
+	AddressService addressService = new AddressService();
+	addressService.delete(Integer.parseInt(no));
+	response.sendRedirect("address_list.jsp");
+
+
 %>

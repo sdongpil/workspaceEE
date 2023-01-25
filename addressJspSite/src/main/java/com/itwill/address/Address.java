@@ -21,7 +21,6 @@ public class Address {
 	public Address() {
 	}
 	public Address(int no, String name, String phone, String address) {
-		super();
 		this.no = no;
 		this.name = name;
 		this.phone = phone;
