@@ -10,7 +10,7 @@
 	}
 	request.setCharacterEncoding("UTF-8");
 	String id=request.getParameter("id");
-	String password=request.getParameter("password");
+	String password=request.getParameter("id");
 	String email1=request.getParameter("email1");
 	String email2=request.getParameter("email2");
 	String gender=request.getParameter("gender");
@@ -41,3 +41,10 @@
 	</ul>
 </body>
 </html>
+
+
+
+
+
+
+
