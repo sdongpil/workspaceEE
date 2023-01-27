@@ -8,7 +8,7 @@ GET방식이면 guest_main.jsp redirection
 1.파라메타받기(guest_name,guest_email,guest_homepage,guest_title,guest_content)
   Guest객체생성
 2.GuestService객체생성
-3.GuestService객체 insertGuest(Guest객체) 메쏘드호출
+3.GuestService객체 insert(Guest객체) 메쏘드호출
 4.guest_list.jsp로 redirection
 */
 %>
