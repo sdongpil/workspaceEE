@@ -2,11 +2,11 @@
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.guest.GuestService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
-GuestService guestService = new GuestService();
-List<Guest> guestList = guestService.findAll();
-%>
+	GuestService guestService=new GuestService();
+	List<Guest> guestList=guestService.findAll();
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,15 +23,15 @@ List<Guest> guestList = guestService.findAll();
 		<!-- header start -->
 		<div id="header">
 			<!-- include_common_top.jsp start-->
-			<jsp:include page="include_common_top.jsp" />
+			<jsp:include page="include_common_top.jsp"/>
 			<!-- include_common_top.jsp end-->
 		</div>
 		<!-- header end -->
 		<!-- navigation start-->
 		<div id="navigation">
 			<!-- include_common_left.jsp start-->
-
-			<jsp:include page="include_common_left.jsp" />
+			
+			<jsp:include page="include_common_left.jsp"/>
 
 			<!-- include_common_left.jsp end-->
 		</div>
@@ -59,20 +59,16 @@ List<Guest> guestList = guestService.findAll();
 										<td width=120 align=center bgcolor="E6ECDE">이름</td>
 										<td width=120 align=center bgcolor="E6ECDE">날짜</td>
 									</tr>
-									<%
-									for (Guest guest : guestList) {
-									%>
+									<%for(Guest guest:guestList){ %>
 									<tr>
 										<td width=50 align=center bgcolor="ffffff" height="20"><%=guest.getGuest_no()%></td>
 										<td width=300 bgcolor="ffffff" style="padding-left: 10"><a
-											href="guest_view.jsp?guest_no=43" class="user"><%=guest.getGuest_title()%></a></td>
+											href="guest_view.jsp?guest_no=<%=guest.getGuest_no() %>" class="user"><%=guest.getGuest_title()%></a></td>
 										<td width=120 align=center bgcolor="ffffff"><%=guest.getGuest_name()%></td>
 										<td width=120 align=center bgcolor="ffffff"><%=guest.getGuest_date()%></td>
 									</tr>
-									<%
-									}
-									%>
-
+									<%}%>
+									
 
 								</table>
 							</form> <br> <!-- button -->
@@ -90,8 +86,8 @@ List<Guest> guestList = guestService.findAll();
 		<!-- footer start-->
 		<div id="footer">
 			<!-- include_common_bottom.jsp start-->
-
-			<jsp:include page="include_common_bottom.jsp" />
+			
+			<jsp:include page="include_common_bottom.jsp"/>
 
 			<!-- include_common_bottom.jsp end-->
 		</div>
