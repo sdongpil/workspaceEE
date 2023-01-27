@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>javascript core object[String]</h1>
+<script type="text/javascript">
+		let str1 = new String("ABCD");
+		let str2 = "0123456789";
+		let str3 = "sdhjko@naver.com";
+		
+		console.log(typeof str1);
+		console.log(typeof str2);
+		
+		console.log(str1.charAt(0));
+		console.log(str1.charCodeAt(0));
+		console.log(str1.toUpperCase());
+		console.log(str1.toLowerCase());
+		console.log(str2.substring(4));
+		console.log(str2.substring(4,6));
+		console.log(str2.substring(4,5));
+		console.log(str2.substr(5,2));
+		console.log(str3.indexOf('@'));
+		console.log(str3.indexOf('.'));
+		console.log(str3.replace('@','골뱅이'));
+		
+		let nameArray = new Array('kim','park','son',"lee");
+		let korArray = [90,8,60,80,95,10,15];
+		let engArray = [90,8,6,80,95,100,15];
+		let totArray = [];
+		
+		for(i=0;i<nameArray.length;i++){
+			totArray.push(korArray[i]+engArray[i]);
+			console.log(nameArray[i],totArray[i]);
+		}
+		
+		
+		
+</script>
+</body>
+</html>
