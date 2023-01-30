@@ -25,6 +25,7 @@
 	AddressService addressService = new AddressService();
 	addressService.delete(Integer.parseInt(no));
 	response.sendRedirect("address_list.jsp");
+	
 
 
 %>

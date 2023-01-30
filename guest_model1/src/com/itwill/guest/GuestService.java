@@ -22,4 +22,11 @@ public class GuestService {
 	public int delete(int no) throws Exception {
 		return guestDao.delete(no);
 	}
+	public int write(Guest guest) throws Exception {
+		return guestDao.insert(guest);
+	}
+	
+	public int modify(Guest guest) throws Exception {
+		return guestDao.update(guest);
+	}
 }
