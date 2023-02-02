@@ -1,5 +1,5 @@
-<%@page import="com.itwill.guest.GuestService"%>
 <%@page import="com.itwill.guest.Guest"%>
+<%@page import="com.itwill.guest.GuestService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -11,12 +11,36 @@
  * 4.Guest  출력
  */
 
-request.setCharacterEncoding("UTF-8");
-String noStr = request.getParameter("guest_no");
+String guest_no = request.getParameter("guest_no");
+if (guest_no == null || guest_no.equals("")) {
+	response.sendRedirect(request.getContextPath());
+	return;
+}
+Guest guest = null;
+try {
+	GuestService guestService = new GuestService();
+	guest = guestService.findByNo(Integer.parseInt(guest_no));
+	if (guest == null) {
+		throw new NumberFormatException("guest null");
+	}
+} catch (NumberFormatException e) {
+	e.printStackTrace();
+	/*********case1*********/
+	//response.sendRedirect("guest_list.jsp");
 
-GuestService guestService = new GuestService();
-Guest guest = guestService.selectByNo(Integer.parseInt(noStr));
+	/*********case2*********/
+	out.println("<script>");
+	out.println("alert('존재하지않는 게시물')");
+	out.println("location.href = 'guest_list.jsp'; ");
+	out.println("</script>");
+
+} catch (Exception e) {
+	e.printStackTrace();
+	response.sendRedirect("guest_error.jsp");
+}
 %>
+
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -32,6 +56,8 @@ Guest guest = guestService.selectByNo(Integer.parseInt(noStr));
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
+	
+	
 	<!-- container start-->
 	<div id="container">
 		<!-- header start -->
@@ -67,38 +93,37 @@ Guest guest = guestService.selectByNo(Integer.parseInt(noStr));
 								</tr>
 							</table> <!-- view Form  -->
 							<form name="f" method="post">
-								<input type="hidden" name="guest_no"
-									value=<%=guest.getGuest_no()%> />
+								<input type="hidden" name="guest_no" value="<%=guest.getGuest_no() %>" />
 								<table border="0" cellpadding="0" cellspacing="1" width="590"
 									bgcolor="BBBBBB">
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">번호</td>
 										<td width=490 bgcolor="ffffff" align="left"
-											style="padding-left: 10px"><%=guest.getGuest_no()%></td>
+											style="padding-left: 10px"><%=guest.getGuest_no() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">이름</td>
 										<td width=490 bgcolor="ffffff" align="left"
-											style="padding-left: 10px"><%=guest.getGuest_name()%></td>
+											style="padding-left: 10px"><%=guest.getGuest_name() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">날짜</td>
 										<td width=490 bgcolor="ffffff" align="left"
-											style="padding-left: 10px"><%=guest.getGuest_date()%></td>
+											style="padding-left: 10px"><%=guest.getGuest_date() %></td>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">홈페이지</td>
 										<td width=490 bgcolor="ffffff" align="left"
-											style="padding-left: 10px"><%=guest.getGuest_homepage()%></td>
+											style="padding-left: 10px"><%=guest.getGuest_homepage() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="22">제목</td>
 										<td width=490 bgcolor="ffffff" align="left"
-											style="padding-left: 10px"><%=guest.getGuest_title()%></td>
+											style="padding-left: 10px"><%=guest.getGuest_title() %></td>
 									</tr>
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="110">내용</td>
 										<td width=490 bgcolor="ffffff" align="left"
-											style="padding-left: 10px"><%=guest.getGuest_content()%></td>
+											style="padding-left: 10px"><%=guest.getGuest_content().replace("\n", "<br>") %></td>
 									</tr>
 								</table>
 							</form> <br />

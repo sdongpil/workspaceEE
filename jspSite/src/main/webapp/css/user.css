@@ -1,0 +1,56 @@
+@charset "EUC-KR";
+
+	/* 
+	tag selector
+	*/
+	
+	
+	body{
+		background-color: pink;
+	}
+	h3{
+		text-align:center;
+	}
+	form{
+		width:450px;
+		margin: 0px auto 0px auto;
+		background : white;
+		border: 1px solid red;
+	}
+	th{
+	 background:#eeeeee;
+	 font-size:8pt;
+	 background-color:black;
+	 color:aqua;
+	}
+	
+ 
+	.TXTFLD{
+	border-width:1px;
+	border-style:solid;
+	border-color:blue;
+	
+	}
+	.TXTFLD1{
+	border-width:1px;
+	border-style:solid;
+	border-color:red;
+	color:red;
+	}
+	
+	/*
+	id selector
+	*/
+	
+	#jointbl{
+	background-color: yellow;
+	width:450px;
+	}
+	#first-tr{
+		color:aqua;
+	}
+	#jointbl > tbody > tr:nth-child(9) > td:nth-child(1) > input[type=submit]{
+	background-color:black;
+	color:aqua;
+	} 
+	
