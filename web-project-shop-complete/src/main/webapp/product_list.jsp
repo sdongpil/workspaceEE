@@ -33,7 +33,7 @@ function add_cart_popup_window(f){
 		var top = Math.ceil(( window.screen.height)/3); 
 		console.log(left);
 		console.log(top);
-		var cartWin = window.open("about:blank","cartForm","width=260,height=130,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+		let cartWin = window.open("about:blank","cartForm","width=260,height=130,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
 		f.action = 'cart_add_action_popup_window.jsp';
 		f.target = 'cartForm';
 		f.method = 'POST';
