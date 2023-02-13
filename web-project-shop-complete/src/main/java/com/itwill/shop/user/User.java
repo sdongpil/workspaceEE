@@ -20,6 +20,7 @@ public class User {
 	private String password;
 	private String name;
 	private String email;
+	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}

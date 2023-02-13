@@ -4,7 +4,6 @@
 <%@page import="com.itwill.shop.cart.CartService"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
 <script type="text/javascript">
 	function login_message() {
 		alert('로그인하세요');
@@ -15,7 +14,6 @@
 	<strong>메 뉴</strong>
 </p>
 <ul>
-		
 		<li><a href="user_view.jsp">김경호1님</a></li>
 		<li><a href="user_logout_action.jsp">로그아웃</a></li>
 		<li></li>

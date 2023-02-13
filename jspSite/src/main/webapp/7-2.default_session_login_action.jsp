@@ -1,6 +1,7 @@
 <%@ page language="java" 
-		contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
-		session="true"%>
+		 contentType="text/html; charset=UTF-8" 
+		 pageEncoding="UTF-8"  
+		 session="true"%>
 <%
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("7-2.default_session_login_form.jsp");
@@ -16,22 +17,17 @@
  	boolean isMember1 = id.equals("user1")&& pass.equals("1111");
  	boolean isMember2 = id.equals("user2")&& pass.equals("2222");
  	if(!(isMember1||isMember2)){
-		//로그인실패 
-		
-		out.print("<script>");
-		out.print("alert('로그인 실패 ');");
-		out.print("location.href= '7-2.default_session_login_form.jsp';");
-		out.print("</script>");
- 		
+		//로그인실패 		
+ 		out.println("<script>");	
+		out.println("alert('로그인실패 다시로그인해보세요!!!!');");
+		out.println("location.href='7-2.default_session_login_form.jsp';");
+		out.println("</script>");
  		return;
  	}
  	/*
  	로그인성공시 세션객체에 loginId라는 키값으로 아이디값을 저장한다.
  	*/
- 	session.setAttribute("loginId",id);
- 	
- 	
- 	
+ 	session.setAttribute("loginId", id);
 %>
 <h1>로그인성공</h1><hr>
 <p><%=id %>님 어서오세요</p>

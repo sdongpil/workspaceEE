@@ -150,10 +150,13 @@ List<Cart> cartList = cartService.getCartItemByUserId(sUserId);
 										tot_price += cart.getProduct().getP_price() * cart.getCart_qty();
 									%>
 									<tr>
-										<td width=60 height=26 align=center bgcolor="ffffff" class=t1><input
-											type="checkbox" name="cart_item_no_check"
+										<td width=60 height=26 align=center bgcolor="ffffff" class=t1>
+										<input
+											type="checkbox" 
+											name="cart_item_no_check"
 											onchange="cart_item_select_count();"
 											value="<%=cart.getCart_no()%>" checked="checked"></td>
+											
 										<td width=40 height=26 align=center bgcolor="ffffff" class=t1><img
 											src='image/<%=cart.getProduct().getP_image()%>' width="34"
 											height="28" /></td>
@@ -161,18 +164,25 @@ List<Cart> cartList = cartService.getCartItemByUserId(sUserId);
 											href='product_detail.jsp?p_no=<%=cart.getProduct().getP_no()%>'><%=cart.getProduct().getP_name()%></a></td>
 
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1>
+											
 											<form action="cart_update_action.jsp" method="post"
 												id="cart_update_form_<%=cart.getCart_no()%>">
+												
 												<input type="hidden" name="cart_no"
 													value="<%=cart.getCart_no()%>"> <input
 													type="button" value="-"
 													onclick="changeNumber('-','cart_update_form_<%=cart.getCart_no()%>');">
+													
 												<input type="text" readonly="readonly" size="2"
 													style="text-align: center; width: 15%" name="cart_qty"
-													value="<%=cart.getCart_qty()%>"> <input
+													value="<%=cart.getCart_qty()%>"> 
+													
+													<input
 													type="button" value="+"
 													onclick="changeNumber('+','cart_update_form_<%=cart.getCart_no()%>');">
 											</form>
+											
+											
 										</td>
 
 										<td width=146 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,##0").format(cart.getProduct().getP_price() * cart.getCart_qty())%></td>

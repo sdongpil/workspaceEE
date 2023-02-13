@@ -1,8 +1,16 @@
 DROP TABLE order_item CASCADE CONSTRAINTS;
 DROP TABLE orders CASCADE CONSTRAINTS;
 DROP TABLE cart CASCADE CONSTRAINTS;
-DROP TABLE userinfo CASCADE CONSTRAINTS;
 DROP TABLE product CASCADE CONSTRAINTS;
+DROP TABLE userinfo CASCADE CONSTRAINTS;
+
+CREATE TABLE userinfo(
+		userId                        		VARCHAR2(100)		 NULL ,
+		password                      		VARCHAR2(100)		 NULL ,
+		name                          		VARCHAR2(100)		 NULL ,
+		email                         		VARCHAR2(100)		 NULL 
+);
+
 
 CREATE TABLE product(
 		p_no                          		NUMBER(10)		 NULL ,
@@ -19,19 +27,12 @@ CREATE SEQUENCE product_p_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
-CREATE TABLE userinfo(
-		userId                        		VARCHAR2(100)		 NULL ,
-		password                      		VARCHAR2(100)		 NULL ,
-		name                          		VARCHAR2(100)		 NULL ,
-		email                         		VARCHAR2(100)		 NULL 
-);
-
 
 CREATE TABLE cart(
 		cart_no                       		NUMBER(10)		 NULL ,
 		userId                        		VARCHAR2(100)		 NULL ,
 		p_no                          		NUMBER(10)		 NULL ,
-		cart_qty                      		NUMBER(10)		 DEFAULT 0		 NULL 
+		cart_qty                      		NUMBER(10)		 NULL 
 );
 
 DROP SEQUENCE cart_cart_no_SEQ;
@@ -71,9 +72,9 @@ CREATE SEQUENCE order_item_oi_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 
 
 
-ALTER TABLE product ADD CONSTRAINT IDX_product_PK PRIMARY KEY (p_no);
-
 ALTER TABLE userinfo ADD CONSTRAINT IDX_userinfo_PK PRIMARY KEY (userId);
+
+ALTER TABLE product ADD CONSTRAINT IDX_product_PK PRIMARY KEY (p_no);
 
 ALTER TABLE cart ADD CONSTRAINT IDX_cart_PK PRIMARY KEY (cart_no);
 ALTER TABLE cart ADD CONSTRAINT IDX_cart_FK0 FOREIGN KEY (userId) REFERENCES userinfo (userId);
@@ -83,6 +84,6 @@ ALTER TABLE orders ADD CONSTRAINT IDX_orders_PK PRIMARY KEY (o_no);
 ALTER TABLE orders ADD CONSTRAINT IDX_orders_FK0 FOREIGN KEY (userId) REFERENCES userinfo (userId);
 
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_PK PRIMARY KEY (oi_no);
-ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK0 FOREIGN KEY (o_no) REFERENCES orders (o_no) ON DELETE CASCADE;
+ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK0 FOREIGN KEY (o_no) REFERENCES orders (o_no);
 ALTER TABLE order_item ADD CONSTRAINT IDX_order_item_FK1 FOREIGN KEY (p_no) REFERENCES product (p_no);
 

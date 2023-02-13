@@ -184,17 +184,19 @@ public class OrderDao {
 				pstmt2.setInt(1, tempOrder.getO_no());
 				rs2 = pstmt2.executeQuery();
 				/*
-				 * O_NO O_DESC O_DATE O_PRICE USERID OI_NO OI_QTY O_NO P_NO P_NAME P_PRICE
-				 * P_IMAGE P_DESC ----------
-				 * -----------------------------------------------------------------------------
-				 * ---------------------------------- 1 비글외1마리 2023/01/06 1550000 guard1 1 1 1 1
-				 * 비글 550000 bigle.png 기타 상세 정보 등... 0 1 비글외1마리 2023/01/06 1550000 guard1 2 2 1
-				 * 2 달마시안 500000 dalma.jpg 기타 상세 정보 등... 0
+				 * O_NO O_DESC O_DATE O_PRICE      USERID OI_NO OI_QTY O_NO P_NO P_NAME 	P_PRICE P_IMAGE P_DESC 
+				 * ---------- ----------------------------------------------------------------------------- 
+				 * 2 비글외2마리 2023/01/06 1550000 guard2   1    1     1    1   비글 		550000 bigle.png 기타 상세 정보 등... 0 
+				 * 2 비글외2마리 2023/01/06 1550000 guard2   2    3     1    2   달마시안 	500000 dalma.jpg 기타 상세 정보 등... 0
+				 * 2 비글외2마리 2023/01/06 1550000 guard2   2    2     1    2   달마시안 	500000 dalma.jpg 기타 상세 정보 등... 0
 				 */
 				Order orderWithOrderItem=null;
 				if (rs2.next()) {
-					orderWithOrderItem = new Order(rs2.getInt("o_no"), rs2.getString("o_desc"), rs2.getDate("o_date"), rs2.getInt("o_price"),
-							rs2.getString("userid"));
+					orderWithOrderItem = new Order(rs2.getInt("o_no"), 
+													rs2.getString("o_desc"),
+													rs2.getDate("o_date"),
+													rs2.getInt("o_price"),
+													rs2.getString("userid"));
 					do {
 						orderWithOrderItem.getOrderItemList()
 								.add(new OrderItem(rs2.getInt("oi_no"), rs2.getInt("oi_qty"), rs2.getInt("o_no"),

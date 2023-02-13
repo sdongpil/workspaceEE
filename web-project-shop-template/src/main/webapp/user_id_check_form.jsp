@@ -71,8 +71,6 @@
 		opener.document.f.userId.value = window.document.checkForm.userId.value;
 		window.close();
 	}
-	
-	
 </script>
 
 </head>

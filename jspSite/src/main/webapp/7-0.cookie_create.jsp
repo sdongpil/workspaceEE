@@ -19,7 +19,7 @@
 	       - 쿠키의유효기간설정(파일로저장)
 	       - 쿠키의유효기간설정안하면(메모리에저장)
 	 */
-	searchKeywordCookie.setMaxAge(60*60*24);
+	//searchKeywordCookie.setMaxAge(60*60*24);
 	/*
 		3.응답객체에 쿠키추가
 	*/

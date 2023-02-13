@@ -208,8 +208,6 @@ public class CartDao {
 								 )
 					);
 		}
-		
-		
 		return cartList;
 	}
 	
@@ -252,8 +250,8 @@ public class CartDao {
 		return deleteRowCount;
 	}
 	public Cart findByCartNo(int cart_no)throws Exception {
-		Cart cart=null;
 		
+		Cart cart=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

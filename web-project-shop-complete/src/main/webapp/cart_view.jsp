@@ -26,6 +26,7 @@
 		document.cart_view_form.action='cart_delete_action.jsp';
 		document.cart_view_form.submit();
 	}
+	//카트담긴전체상품주문
 	function cart_view_form_order_submit(){
 		document.cart_view_form.method='POST';
 		document.cart_view_form.buyType.value='cart';

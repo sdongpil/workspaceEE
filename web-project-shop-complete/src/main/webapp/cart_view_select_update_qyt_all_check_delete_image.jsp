@@ -94,14 +94,18 @@ List<Cart> cartList = cartService.getCartItemByUserId(sUserId);
 	function cart_item_select_count(){
 			var cart_item_no_check_list = document.getElementsByName("cart_item_no_check");
 			var cart_item_check_selected_count = 0;
+			
+			
 			document.cart_view_form.innerHTML ='';
 			document.cart_view_form.innerHTML +="<input type='hidden' name='buyType'>";
 			var tot_order_price=0;
+			
 			for (var i = 0; i < cart_item_no_check_list.length; i++) {
 				if (cart_item_no_check_list.item(i).checked === true) {
 					document.cart_view_form.innerHTML += "<input type='hidden' name='cart_item_no' value='"+ cart_item_no_check_list.item(i).value + "'>";
 					var updateFormId='cart_update_form_'+ cart_item_no_check_list.item(i).value;
 					var cart_qty=document.getElementById(updateFormId).cart_qty.value;
+					
 					var cart_product_unit_price=document.getElementById(updateFormId).cart_product_unit_price.value;
 					tot_order_price+=cart_qty*cart_product_unit_price;
 					cart_item_check_selected_count++;
@@ -190,9 +194,15 @@ List<Cart> cartList = cartService.getCartItemByUserId(sUserId);
 										tot_price += cart.getProduct().getP_price() * cart.getCart_qty();
 									%>
 									<tr>
+										
 										<td width=60 height=26 align=center bgcolor="ffffff" class=t1>
-										 <input type="checkbox" name="cart_item_no_check" onchange="cart_item_all_select_checkbox_deselect();cart_item_select_count();" value="<%=cart.getCart_no()%>" checked="checked">
+										 <input type="checkbox" 
+										 name="cart_item_no_check" 
+										 onchange="cart_item_all_select_checkbox_deselect();cart_item_select_count();" 
+										 value="<%=cart.getCart_no()%>" checked="checked">
 										</td>
+										
+										
 										<td width=40 height=26 align=center bgcolor="ffffff" class=t1>
 											<img src='image/<%=cart.getProduct().getP_image()%>' width="34" height="28" />
 										</td>
@@ -231,8 +241,9 @@ List<Cart> cartList = cartService.getCartItemByUserId(sUserId);
 													href="javascript:cart_delete_item_action('cart_delete_item_form_<%=cart.getCart_no()%>');">
 													<svg xmlns="http://www.w3.org/2000/svg" width="14"
 														height="14" viewBox="0 0 28 28" class="icon--close">
-													<g fill="none" fill-rule="evenodd"> <path
-														d="M0 0H28V28H0z"></path> <g fill="#9B9BA0"
+													<g fill="none" fill-rule="evenodd"> 
+													<path d="M0 0H28V28H0z"></path> 
+														<g fill="#9B9BA0"
 														transform="translate(6 6)" class="icon--close__group">
 													<rect width="2" height="18" x="7" y="-1" rx="1"
 														transform="rotate(-135 8 8)"></rect> <rect width="2"

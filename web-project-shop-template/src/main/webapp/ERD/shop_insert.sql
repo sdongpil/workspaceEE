@@ -16,44 +16,27 @@ insert into product values(product_p_no_SEQ.nextval, '사모예드', 800000, 'sa
 
 
 /**********************cart insert************************/
-insert into cart(cart_no,userId,p_no,cart_qty) values (cart_cart_no_SEQ.nextval,'guard1',1,2);
-insert into cart(cart_no,userId,p_no,cart_qty) 
-values
-(cart_cart_no_SEQ.nextval,'guard1',2,1);
+--guard1님이 1번2개,3번1개,7번3개 제품담기
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',1,2); 
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',3,1); 
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',7,3); 
+--guard2님이 1번2개,3번1개 제품담기
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard2',1,2); 
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard2',3,1); 
 
-insert into cart(cart_no,userId,p_no,cart_qty) 
-values
-(cart_cart_no_SEQ.nextval,'guard1',3,5);
-
-
-insert into cart(cart_no,userId,p_no,cart_qty) 
-values
-(cart_cart_no_SEQ.nextval,'guard2',1,1);
-insert into cart(cart_no,userId,p_no,cart_qty) 
-values
-(cart_cart_no_SEQ.nextval,'guard2',3,1);
 
 /**********************orders insert************************/
-insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'비글외1종',sysdate-2,1050000,'guard1');
+--제품상세보기에서주문
+insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'비글외0종',sysdate,550000,'guard1');
+insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,1);
+
+--카트에서주문
+insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'비글외2종',sysdate,180000,'guard1');
 insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,1);
 insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,2);
-
-insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'퍼그외0종',sysdate-1,400000,'guard1');
 insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,3);
 
 
-insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'페키니즈외1종',sysdate,1450000,'guard1');
-insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,4);
-insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,2,orders_o_no_SEQ.currval,2);
-
-
-
-insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'달마시안외0종',sysdate-1,500000,'guard2');
-insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,2);
-
-insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'비글외1종',sysdate,1000000,'guard2');
-insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,2);
-insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval,1,orders_o_no_SEQ.currval,4);
 
 
 commit;

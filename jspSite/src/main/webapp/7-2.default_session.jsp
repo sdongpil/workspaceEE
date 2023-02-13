@@ -34,12 +34,12 @@
 
 %>
 <ol>
-	<li>session객체참조변수:<%=session %></li>
-	<li>session객체생성여부:<%=session.isNew() %></li>
-	<li>session객체세션아이디:<%=session.getId() %></li>
-	<li>session객체생성시간:<%=session.getCreationTime() %> </li>
-	<li>session객체유효시간:<%= session.getMaxInactiveInterval() %></li>
-	<li>session객체마지막바인딩시간:<%=session.getLastAccessedTime()%></li>
+	<li>session객체참조변수:<%=session%></li>
+	<li>session객체생성여부:<%=session.isNew()%> %></li>
+	<li>session객체세션아이디:<%=session.getId()%></li>
+	<li>session객체생성시간:<%=session.getCreationTime() %></li>
+	<li>session객체유효시간:<%=session.getMaxInactiveInterval() %></li>
+	<li>session객체마지막바인딩시간:<%=session.getLastAccessedTime() %></li>
 </ol>
 
 

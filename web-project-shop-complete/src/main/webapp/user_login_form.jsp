@@ -28,6 +28,7 @@ if(fuser==null){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
+<link rel=stylesheet href="css/shop.css" type="text/css">
 <link rel=stylesheet href="css/user.css" type="text/css">
  
 <script type="text/javascript">
@@ -87,7 +88,7 @@ if(fuser==null){
 											- 로그인</b></td>
 								</tr>
 							</table> <!-- login Form  -->
-							<form name="f" method="post">
+							<form  name="f" method="post">
 								<table border="0" cellpadding="0" cellspacing="1"
 									bgcolor="BBBBBB">
 									<tr>

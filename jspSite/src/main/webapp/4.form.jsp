@@ -4,66 +4,67 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 가입</title>
-
-<link rel = "stylesheet" type="text/css" href = "css/user.css">
-
+<link rel="stylesheet" type="text/css" href="https://pm.pstatic.net/dist/css/nmain.20221110.css">
+<link rel="stylesheet" type="text/css" href="css/user.css">
 <style type="text/css">
-	/* 
+	/*
 	tag selector
 	*/
-	
-	/*
-	body{
+	/* body{
 		background-color: pink;
 	}
 	h3{
-		text-align:center;
+		text-align: center;
 	}
 	form{
-		width:450px;
+		width: 450px;
 		margin: 0px auto 0px auto;
-		background : white;
-		border: 1px solid red;
+		background: white;
+		border: 1px solid black;
 	}
 	th{
-	 background:#eeeeee;
-	 font-size:8pt;
-	 background-color:black;
-	 color:aqua;
-	}
-	
-	// class selector
-	.TXTFLD{
-	border-width:1px;
-	border-style:solid;
-	border-color:blue;
-	
+		background:#eeeeee; 
+		font-size:8pt;
+	} */
+	/*
+	class selector
+	*/
+	/* .TXTFLD{
+		border-width: 1px;
+		border-style: solid;
+		border-color: black;
+		
 	}
 	.TXTFLD1{
-	border-width:1px;
-	border-style:solid;
-	border-color:red;
-	color:red;
-	}
+		border-width: 1px;
+		border-style: solid;
+		border-color: blue;
+		color: blue;
+	} */
 	
 	/*
 	id selector
 	*/
-	/*
-	#jointbl{
-	background-color: yellow;
-	width:450px;
+	
+	/* #jointbl{
+		background-color: gold;
+		width: 450px;
 	}
 	#first-tr{
-		color:aqua;
+		color:maroon;
 	}
-	#jointbl > tbody > tr:nth-child(9) > td:nth-child(1) > input[type=submit]{
-	background-color:black;
-	color:aqua;
-	} 
-	*/
-	
-	
+	#jointbl  input[type=submit]{
+		color: white;
+		background: gold;
+		border: 1px solid white;
+		
+	}
+	#jointbl  input[type=submit]:hover{
+		background: white;
+		color: gold;
+		border: 1px solid white;
+		
+	} */
 </style>
 <script type="text/javascript" src="js/co.js"></script>
 <script type="text/javascript" src="js/member.js"></script>

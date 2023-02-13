@@ -1,55 +1,65 @@
 
-
+<%@page import="com.itwill.shop.user.exception.PasswordMismatchException"%>
+<%@page import="com.itwill.shop.user.exception.UserNotFoundException"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="com.itwill.shop.user.User"%>
 <%@page import="com.itwill.shop.user.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" session="true"%>
+    pageEncoding="UTF-8"%>
 <%
-	/*
-	0  . GET방식요청일때 user_login_form.jsp로 redirection
-	1  . 요청객체 인코딩설정
-	2  . 파라메타 받기
-	3  . UserService객체생성
-	4  . UserService.login() 메쏘드실행
-	*/
 	if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("user_login_form.jsp");
 		return;
 	}
-	//request.setCharacterEncoding("UTF-8");
-	String userId = request.getParameter("userId");
-	String password = request.getParameter("password");
-	UserService userService=new UserService();
-	int result = userService.login(userId, password);
-	/*
-	 * 회원로그인
-	 * 
-	 * 0:아이디존재안함
-	 * 1:패쓰워드 불일치
-	 * 2:로그인성공(세션)
-	 */
-	 if(result==0){
-		 //0:아이디존재안함
-		 String msg1=userId+" 는 존재하지않는 아이디입니다.";
-		 out.println("<script>");
-		 out.println("alert('"+msg1+"');");
-		 out.println("location.href='user_login_form.jsp';");
-		 out.println("</script>");
-			
-	 }else if(result==1){
-		 //1:패쓰워드 불일치
-		 String msg2="패쓰워드가 일치하지않습니다.";
-		 out.println("<script>");
-		 out.println("alert('"+msg2+"');");
-		 out.println("location.href='user_login_form.jsp';");
-		 out.println("</script>");
-			
-		 
-	 }else if(result==2){
-		 //2:로그인성공(세션)
-		 session.setAttribute("sUserId", userId);
-		 response.sendRedirect("shop_main.jsp");
-	 }
-	
-	
-	
+	String userId=null;
+	String password=null;
+	try{
+		userId=request.getParameter("userId");
+		password=request.getParameter("password");
+		UserService userService=new UserService();
+		User loginUser =  userService.login(userId, password);
+		session.setAttribute("sUserId", userId);
+		session.setAttribute("sUser", loginUser);
+		response.sendRedirect("shop_main.jsp");
+		
+	}catch(UserNotFoundException e){
+		/*********************case3[forward]****************
+		request.setAttribute("msg1", e.getMessage());
+		request.setAttribute("fuser",new User(userId,password,"",""));
+		RequestDispatcher rd=
+				request.getRequestDispatcher("user_login_form.jsp");
+		rd.forward(request, response);
+		***********************************/
+		/***************case1[redirect]****************
+		response.sendRedirect("user_login_form.jsp?msg1="+URLEncoder.encode(e.getMessage(), "UTF-8"));
+		************************************/
+		/*****************case2[정상응답]**********************/
+		out.println("<script>");
+		out.println("alert('"+e.getMessage()+"');");
+		out.println("location.href='user_login_form.jsp';");
+		out.println("</script>");
+		/********************************************/
+		
+	}catch(PasswordMismatchException e){
+		
+		/*********************case3[forward]****************
+		request.setAttribute("msg2", e.getMessage());
+		request.setAttribute("fuser",new User(userId,password,"",""));
+		RequestDispatcher rd=
+				request.getRequestDispatcher("user_login_form.jsp");
+		rd.forward(request, response);
+		***********************************/
+		/***************case1[redirect]****************
+		response.sendRedirect("user_login_form.jsp?msg2="+URLEncoder.encode(e.getMessage(), "UTF-8"));
+		************************************/
+		/*****************case2[정상응답]********************/
+		out.println("<script>");
+		out.println("alert('"+e.getMessage()+"');");
+		out.println("location.href='user_login_form.jsp';");
+		out.println("</script>");
+		/********************************************/
+	}catch(Exception e){
+		e.printStackTrace();
+		response.sendRedirect("user_error.jsp");
+	}
 %>

@@ -14,14 +14,12 @@ OrderService orderService = new OrderService();
 List<Order> orderList = orderService.orderWithOrderItemList(sUserId);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
 <title>쇼핑몰 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/shop.css" type="text/css">
- 
 <style type="text/css" media="screen">
 </style>
 <script type="text/javascript">

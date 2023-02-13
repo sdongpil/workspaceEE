@@ -21,17 +21,24 @@
 <style type="text/css" media="screen">
 </style>
 <script type="text/javascript">
+	/*
+	cart 삭제
+	*/
 	function cart_delete(){
 		document.cart_view_form.method='POST';
 		document.cart_view_form.action='cart_delete_action.jsp';
 		document.cart_view_form.submit();
 	}
+	
+	//카트 전체상품을 주문
 	function cart_view_form_order_submit(){
 		document.cart_view_form.method='POST';
 		document.cart_view_form.buyType.value='cart';
 		document.cart_view_form.action='order_create_form.jsp';
 		document.cart_view_form.submit();
 	}
+	
+	//선택된 카트 아이템을 주문
 	function cart_view_form_select_order_submit(){
 		var cart_item_no_check_list=document.getElementsByName("cart_item_no_check");
 		var isChecked=false;
@@ -51,8 +58,10 @@
 		document.cart_view_form.action='order_create_form.jsp';
 		document.cart_view_form.submit();
 	}
+	/*
+	체크박스 선택시 실행 (cart 수량
+	*/
 	function cart_item_select_count(){
-		
 		var cart_item_no_check_list = document.getElementsByName("cart_item_no_check");
 		var cart_item_check_selected_count = 0;
 		for (var i = 0; i < cart_item_no_check_list.length; i++) {
@@ -60,7 +69,6 @@
 				cart_item_check_selected_count++;
 			}
 		}
-		
 		document.getElementById('cart_item_select_count').innerHTML = cart_item_check_selected_count;
 	}
 </script>
@@ -134,7 +142,14 @@
 									tot_price+=cart.getProduct().getP_price()*cart.getCart_qty();
 									%>
 									<tr>
-										<td width=60 height=26 align=center bgcolor="ffffff" class=t1><input type="checkbox" name="cart_item_no_check" onchange="cart_item_select_count();" value="<%=cart.getCart_no()%>" checked="checked"></td>
+										<td width=60 height=26 align=center bgcolor="ffffff" class=t1>
+										<input type="checkbox" 
+										name="cart_item_no_check" 
+										onchange="cart_item_select_count();" 
+										value="<%=cart.getCart_no()%>" 
+										checked="checked"></td>
+										
+										
 										<td width=40 height=26 align=center bgcolor="ffffff" class=t1><img src='image/<%=cart.getProduct().getP_image()%>' width="34" height="28"/></td>
 										<td width=210 height=26 align=center bgcolor="ffffff" class=t1><a href='product_detail.jsp?p_no=<%=cart.getProduct().getP_no()%>'><%=cart.getProduct().getP_name() %></a></td>
 										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=cart.getCart_qty()%></td>
