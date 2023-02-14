@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
 
 /**
- * Servlet implementation class GuestViewServlet
+ * Servlet implementation class GuestWriteFormSevlet
  */
-public class GuestViewServlet extends HttpServlet {
+public class GuestRemoveActionServlet extends HttpServlet {
 	private GuestService guestService;
 
-	public GuestViewServlet() throws Exception {
+	public GuestRemoveActionServlet() throws Exception {
 		guestService = new GuestService();
 	}
 
@@ -26,41 +25,35 @@ public class GuestViewServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String forwardPath = "";
 		try {
-			String guest_noStr = request.getParameter("guest_no");
-			if (guest_noStr == null || guest_noStr.equals("")) {
-				//response.sendRedirect("guest_main.do");
+			if (request.getMethod().equalsIgnoreCase("GET")) {
 				forwardPath="redirect:guest_main.do";
 			}else {
-				Guest guest = guestService.findByNo(Integer.parseInt(guest_noStr));
-				request.setAttribute("guest", guest);
-				forwardPath = "forward:/WEB-INF/views/guest_view.jsp";
+				String guest_noStr = request.getParameter("guest_no");
+				int deleteRowCount = guestService.delete(Integer.parseInt(guest_noStr));
+				forwardPath="redirect:guest_list.do";
 			}
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
-			forwardPath = "forward:/WEB-INF/views/guest_error.jsp";
+			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
 		}
-
-		/************forward or redirect*************/
+		/************ forward or redirect *************/
 		/*
-		 * forward ---> forward:/WEB-INF/views/guest_xxx.jsp
+		 * forward ---> forward:/WEB-INF/views/guest_xxx.jsp 
 		 * redirect---> redirect:guest_xxx.do
 		 */
 		String[] pathArray = forwardPath.split(":");
-		String forwardOrRedirect=pathArray[0];
-		String path=pathArray[1];
-		if(forwardOrRedirect.equals("redirect")) {
-			//redirect
+		String forwardOrRedirect = pathArray[0];
+		String path = pathArray[1];
+		if (forwardOrRedirect.equals("redirect")) {
+			// redirect
 			response.sendRedirect(path);
-		}else {
-			//forwarding
+		} else {
+			// forwarding
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
 		}
 		/*****************************************/
+
 	}
 
 }
-
-
-
-

@@ -9,15 +9,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwill.guest.Guest;
+import com.itwill.guest.GuestService;
+
 /**
  * Servlet implementation class GuestWriteFormSevlet
  */
-public class GuestWriteFormServlet extends HttpServlet {
-
+public class GuestModifyFormServlet extends HttpServlet {
+	private GuestService guestService;
+	public GuestModifyFormServlet()throws Exception {
+		guestService=new GuestService();
+	}
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String forwardPath = "";
-		forwardPath = "forward:/WEB-INF/views/guest_write_form.jsp";
+		try {
+			
+			if(request.getMethod().equalsIgnoreCase("GET")){
+				//response.sendRedirect("guest_main.do");
+				forwardPath="redirect:guest_main.do";
+			}else {
+				String guest_noStr=request.getParameter("guest_no");
+				Guest guest=
+						guestService.findByNo(Integer.parseInt(guest_noStr));
+				request.setAttribute("guest",guest);
+				forwardPath = "forward:/WEB-INF/views/guest_modify_form.jsp";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+		}
 		
 		/************forward or redirect*************/
 		/*
@@ -36,7 +57,7 @@ public class GuestWriteFormServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 		/*****************************************/
-		
+
 	}
 
 }
