@@ -42,7 +42,7 @@ application.setAttribute("url", "a.jsp");
 	<%}%>
 	
 		
-	
+	   
 	
 	<li>--------cookie---------</li>
 	
