@@ -17,6 +17,10 @@ import com.itwill.summer.mvc.Controller;
  */
 public class GuestListController implements Controller {
 
+	GuestService guestService = new GuestService();
+	
+	
+	
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath = "";
 		
@@ -25,7 +29,6 @@ public class GuestListController implements Controller {
 		 * 2. request scope객체에 담기[setAttribute()]
 		 * 3. forwardPath반환
 		 */
-		GuestService guestService = new GuestService();
 		try {
 		ArrayList<Guest> guestList  = guestService.selectAll();
 		request.setAttribute("guestList", guestList);		

@@ -20,6 +20,8 @@ public class GuestListController implements Controller{
 	public GuestListController() {
 		guestService=new GuestService();
 	}
+	
+	
 	public String handleRequest(HttpServletRequest request,
 								HttpServletResponse response) {
 		String forwardPath="";
